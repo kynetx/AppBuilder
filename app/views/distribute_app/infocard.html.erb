@@ -1,0 +1,26 @@
+<%= stylesheet "distribute" %>
+<%= app_menu :distribute, params[:id], "InfoCard" %>
+
+<div style="float:left; width: 260px;"><%= image_tag(current_application.image_url(:icard), :style=>"border: 1px solid #CCC") %></div>
+
+<div id="infocard_form" style="float: left">
+	<%= form_tag :controller => "distribute_app", :action => "gen_infocard" %>
+		<%= hidden_field_tag :id, current_application.application_id %>
+		<%= label_tag :name, "Card Name<sup>*</sup>:" %>
+		<%= text_field_tag :name, "#{current_application.name}"  %>
+		<br>
+		<%= label_tag :datasets, "DataSet Key" %>
+		<%= text_field_tag :datasets %>
+		<br>
+		<%= submit_tag "Make Card" %>
+	</form>
+	<br><br>
+	<p style="font-size:90%">*The characters &amp; ' &lt; are not allowed.</p>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function() {
+		$("input#name").focus();
+	});
+	
+</script>

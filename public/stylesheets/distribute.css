@@ -1,0 +1,29 @@
+#infocard_form label {
+	display: block;
+	float: left;
+	width: 100px;
+	margin-top: 6px;
+}
+
+#infocard_form input[type="text"] {
+	border: 1px solid #CCC;
+	width: 150px;
+	font-size: 14px;
+	padding: 2px;
+	
+}
+
+#extension_form label {
+	display: block;
+	float: left;
+	width: 130px;
+	margin-top: 6px;
+}
+
+
+#extension_form input[type="text"] {
+	border: 1px solid #CCC;
+	width: 150px;
+	font-size: 14px;
+	padding: 2px;
+}

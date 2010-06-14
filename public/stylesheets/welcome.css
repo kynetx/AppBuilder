@@ -1,0 +1,45 @@
+#welcome {
+  width: 900px;
+  margin: 25px auto;
+}
+#tour, #data-roll {
+  float: left;
+}
+#tour {
+  height:379px;
+  width:525px;
+}
+
+#data-roll {
+  margin-left: 30px;
+  width: 300px;
+}
+
+h1 {
+  font-size:20px;
+  font-weight:normal;
+  margin:0 0 9px 0;
+  text-align: center;
+}
+
+h2 {
+  border-top:1px solid #BBBBBB;
+  font-size:15px;
+  margin-top:15px;
+  padding-top:15px;
+}
+
+h2 a {
+  color: black;
+  text-decoration: none;
+}
+
+h2 a:hover {
+  text-decoration: underline;
+}
+
+#login-link {
+  display:block;
+  margin:23px auto;
+  width:187px;
+}

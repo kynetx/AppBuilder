@@ -1,0 +1,15 @@
+<div id="source">
+	Version: <%= @version %><br>
+	<%= text_area_tag "source_text", @source, :rows => "40", :cols => "80" %>
+	<br>
+	<%= link_to "Close", "#", :onclick => "$('#source_viewer').slideUp('fast', function() {$('#source').remove()}); "  %>
+		
+		
+		
+		
+	<script type="text/javascript" charset="utf-8">
+		$('#source_text').focus();
+	</script>
+</div>
+
+

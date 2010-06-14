@@ -1,0 +1,117 @@
+#edit-controls {
+  height: 40px;
+}
+
+#breadcrumb {
+  float:left;
+  font-size:21px;
+  margin:10px 10px 0 20px;
+}
+
+#edit-nav {
+  float:right;
+  margin:10px 10px 0;
+  min-width: 430px;
+}
+
+#edit-nav img {
+  float: left;
+}
+
+.expand-all {
+  padding-top: 5px;
+}
+.expand-all a {
+  margin: 5px;
+  cursor: pointer;
+}
+
+
+/* APP SECTION */
+.app-section {
+  background-color: #F2F2F2;
+  margin: 0 10px 2px 20px;
+  clear: both;
+}
+
+.section-header {
+  height: 30px;
+}
+.section-header img {
+  margin: 5px;
+  float: left;
+  cursor: pointer;
+}
+.section-header h2 {
+  float:left;
+  font-size:18px;
+  font-weight:normal;
+  margin:8px 0 0;
+}
+
+.section-edit {
+  margin:0 0 5px 5px;
+}
+
+.section-controls {
+  width: 28px;
+  float: left;
+  min-height: 20px;
+}
+
+.section-edit textarea {
+  float: left;
+  margin-bottom: 5px;
+  overflow-y: auto;
+}
+
+
+/* SORTING HANDLE */
+.handle {
+  float: right;
+}
+
+#app-section-template {
+  display: none;
+}
+
+
+/* CONTROL TRAY */
+
+#branding {
+  height: 40px;
+}
+
+#control-tray {
+  background-color:green;
+  height:24px;
+  left:0;
+  position:fixed;
+  top:0;
+  width:100%;
+}
+
+#control-tray #working {
+  float: left;
+}
+
+#control-tray #timer, #control-buttons {
+  float: right;
+  margin-right: 15px;
+}
+
+#timer {
+  margin-top: 4px;
+}
+
+#working {
+  margin-left: 15px;
+}
+
+#working * {
+  float: left;
+}
+
+#working #action {
+  margin: 4px 0 0 5px;
+}

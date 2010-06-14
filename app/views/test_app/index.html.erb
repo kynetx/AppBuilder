@@ -1,0 +1,77 @@
+<% stylesheet "distribute" %>
+<%= app_menu :test, params[:id] %>
+<style type="text/css" media="screen">
+#bookmarklet-stuff, #info-card-stuff {
+  margin: 0 0 30px 40px;
+}
+#bookmarklet {
+  display:block;
+  font-size:20px;
+  margin:10px;
+}
+#bookmarklet-source {
+  display: none;
+}
+h1 {
+  margin-top: 20px;
+  font-weight: normal; 
+}
+#about {
+  color:#333333;
+  margin-top:20px;
+  width:370px;
+}
+#grab-me {
+  background-color: #F2F2F2;
+  width: -moz-fit-content;
+  -moz-border-radius:5px 5px 5px 5px;
+  float: left;
+  margin: 10px 0;
+}
+#embed-bookmarklet {
+  height:109px;
+  width:468px;
+}
+</style>
+<script type="text/javascript" charset="utf-8">
+$(document).ready(function() {
+  $("#source").click(function() {
+    $("#bookmarklet-source").slideToggle();
+  });
+});
+</script>
+<h1>Test Bookmarklet</h1>
+<div id="bookmarklet-stuff">
+  <p>Drag the link below to your browser <a id="source">(source)</a></p>
+  <div id="grab-me">
+    <%= link_to "Test #{current_application.name}", @bookmarklet , :id => "bookmarklet"%>
+  </div>
+  <br class="clear"/>
+  <textarea id="bookmarklet-source" class="simple_surround" readonly="true">
+    <%= @bookmarklet %>
+  </textarea>
+</div>
+<hr/>
+<h1>Test InfoCard</h1>
+<div id="info-card-stuff">
+  <div style="float:left; width: 260px;">
+    <%= image_tag(current_application.image_url(:icard), :style=>"border: 1px solid #CCC") %>
+  </div>
+  <div id="infocard_form" style="float: left">
+  	<%= form_tag :controller => "distribute_app", :action => "gen_infocard" %>
+  		<%= hidden_field_tag :id, current_application.application_id %>
+  		<%= hidden_field_tag :env, "dev" %>
+  		<%= label_tag :name, "Card Name<sup>*</sup>:" %>
+  		<%= text_field_tag :name, "TEST::#{current_application.name}" %>
+  		<br>
+  		<%= label_tag :datasets, "DataSet Key" %>
+  		<%= text_field_tag :datasets %>
+  		<br>
+  		<%= submit_tag "Make Card" %>
+  	</form>
+  	<br><br>
+  	<p style="font-size:90%">*The characters &amp; ' &lt; are not allowed.</p>
+  </div>
+</div>
+<br class="clear"/>
+<p id="about">** Test endpoints always run the latest version of the application and should be used for testing only. For production endpoints goto the distribute page</p>

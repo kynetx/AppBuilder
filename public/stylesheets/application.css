@@ -1,0 +1,198 @@
+/* CSS RESET */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td { margin: 0; padding: 0; border: 0; outline: 0; font-size: 100%; vertical-align: baseline; background: transparent; } body { line-height: 1; } ol, ul { list-style: none; } blockquote, q { quotes: none; } blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; } :focus { outline: 0; } ins { text-decoration: none; } del { text-decoration: line-through; } table { border-collapse: collapse; border-spacing: 0; }
+
+body {
+/*  background-color: #4B7399;*/
+  font-family: Helvetica, Verdana, Arial;
+  font-size: 14px;
+}
+
+a img {
+  border: none;
+}
+
+a {
+  color: #336699;
+}
+
+h1 {
+	margin: 3px 0px 3px 0px;
+	font-size: 20px;
+}
+
+h2 {
+	margin: 3px 0px 3px 0px;
+}
+
+.body_content {
+	margin: 0px 10px 0px 10px;
+	position: relative;
+}
+
+.clear {
+  clear: both;
+  height: 0;
+  overflow: hidden;
+}
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
+
+#container {
+  width: 100%;
+  min-width: 700px;
+}
+
+#flash_notice, #flash_error {
+  padding: 5px 8px;
+  margin: 10px 0;
+}
+
+#flash_notice {
+  background-color: #CFC;
+  border: solid 1px #6C6;
+}
+
+#flash_error {
+  background-color: #FCC;
+  border: solid 1px #C66;
+}
+
+.fieldWithErrors {
+  display: inline;
+}
+
+#errorExplanation {
+  width: 400px;
+  border: 2px solid #CF0000;
+  padding: 0px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#errorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: 0;
+  background-color: #c00;
+  color: #fff;
+}
+
+#errorExplanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 8px;
+}
+
+#errorExplanation ul {
+  margin: 2px 24px;
+}
+
+#errorExplanation ul li {
+  font-size: 12px;
+  list-style: disc;
+}
+
+#user_nav {
+  font-size: 12px;
+  text-align: right;
+}
+
+
+/* BRANDING HEADER */
+#branding {
+  height: 50px;
+  width: 100%;
+  background-image: url('/images/branding-background.png');
+}
+
+#appbuilder-logo img {
+  margin: 10px 0 0 20px;
+  float: left;
+}
+
+#usernav {
+  margin: 10px 20px 0 0;
+  float: right;
+  color: white;
+}
+
+#usernav a {
+  text-decoration: none;
+  color: white;
+}
+
+
+.simple_surround {
+/*	border: 1px solid #CCC;*/
+	padding: 5px;`
+	font-family: courier;
+	margin: 10px 0px 10px 0px;
+	width: 500px;
+	height: 100px;
+	
+}
+
+.qtable {
+	border: 1px solid #CCC;
+	width: 80%;
+}
+
+.qtable th {
+	border-right: 1px solid #CCC;
+	border-bottom: 1px solid #CCC;
+	background-color: #F3F4F3;
+	font-size: 11px;
+	font-family: Helvetica, Arial, sans-serif;
+	text-transform: uppercase;
+	padding: 8px;
+}
+
+.qtable td {
+	font-size: 12px;
+	font-family: Helvetica, Arial, sans-serif;
+	padding: 8px;
+	border-bottom: 1px solid #CCC;
+	color: #4E4E4E;
+}
+
+#edit-nav {
+  float:right;
+  height:31px;
+  margin-top:5px;
+  width:427px;
+}
+#edit-nav img {
+  margin-right: 1px;
+}
+
+.breadcrumb {
+	display: block;
+	float:left;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 18px;
+	margin: 5px 0px 5px 0px;
+}
+
+
+/* DISTRIBUTE DROPDOWN FOR APP NAVIGATION */
+#distribute-dropdown {
+  display: none;
+  background-color:#D5DDE3;
+  padding-bottom:14px;
+  position:absolute;
+  right:1px;
+  top:31px;
+  z-index: 4000;
+}
+#distribute-dropdown a {
+  clear:right;
+  float:right;
+  margin:7px 14px 0 13px;
+}

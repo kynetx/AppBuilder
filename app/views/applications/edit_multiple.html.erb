@@ -1,0 +1,128 @@
+<%= javascript "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js" %>
+<%= javascript "edit_app" %>
+<%= stylesheet "edit_app" %>
+
+<!-- <div id="control-tray">
+  <div id="working"><img src="/images/working.gif"/>
+
+    <div id="action">Saving</div>
+  </div>
+  <div id="timer">Last Save: <span id="time">--:--:--</span></div>
+  <div id="control-buttons">
+    <span><img src="/images/shortcuts.png" alt="keyboard shortcuts"/></span>
+    <span><img id="new-rule" src="/images/new-rule.png" alt="new rule"/></span>
+    <span><img id="expand-all" src="/images/expand.png" alt="expand"/></span>
+    <span><img id="collapse-all" src="/images/minimize.png" alt="collapse"/></span>
+    <span><img id="save-app" src="/images/save.png" alt="save"/></span>
+  </div>
+</div> --><!-- #control-tray -->
+<div id="notification-tray">
+  <h1>blah blah blah</h1>
+</div>
+<% form_for :application, :url => application_path(:id=>@application.application_id)  do |form| %>
+    <input type="hidden" name="_method" value="put"/>
+    <div id="edit-controls">
+      <div id="breadcrumb">
+        Applications / Lorem Ipsum / Edit
+      </div>
+      <div id="app-id" appid="<%= @application.application_id %>"></div>
+
+      <%= app_menu(:edit, @application.application_id) %>
+
+    </div><!-- #edit-controls -->
+    <div id="non-rules">
+      <div class="app-section">
+        <div class="section-header">
+          <img src='/images/minimize.png'/>
+
+          <h2>Meta</h2>
+        </div>
+        <!-- .section-header -->
+        <div class="section-edit">
+          <div class='section-controls'></div>
+          <%=form.text_area :meta, :cols => 90, :rows => 10%>
+          
+          <br class="clear"/>
+        </div>
+        <!-- .section-edit -->
+      </div>
+      <!-- .app-section -->
+      <div class="app-section">
+        <div class="section-header">
+          <img src='/images/minimize.png'/>
+
+          <h2>Dispatch</h2>
+        </div>
+        <!-- .section-header -->
+        <div class="section-edit">
+          <div class='section-controls'></div>
+          <%=form.text_area :dispatch, :cols => 90, :rows => 10%>
+          <br class="clear"/>
+        </div>
+        <!-- .section-edit -->
+      </div>
+      <!-- .app-section -->
+      <div class="app-section">
+        <div class="section-header">
+          <img src='/images/minimize.png'/>
+
+          <h2>Global</h2>
+        </div>
+        <!-- .section-header -->
+        <div class="section-edit">
+          <div class='section-controls'></div>
+          <%=form.text_area :global, :cols => 90, :rows => 10%>
+          <br class="clear"/>
+        </div>
+        <!-- .section-edit -->
+      </div>
+      <!-- .app-section -->
+    </div><!-- #non-rules -->
+
+    <div id="rules">
+      <% @application.rules.each do |rule| %>
+          <div class="app-section">
+            <div class="section-header">
+              <img src='/images/minimize.png'/>
+
+              <h2><%= rule.name %></h2>
+              <span class="handle"><img src="/images/move.png"/></span>
+            </div>
+            <!-- .section-header -->
+            <div class="section-edit">
+              <div class='section-controls'>
+                <img class="delete-rule" src="/images/delete.png"/>
+              </div>
+              <!-- <textarea cols="90" rows="20" name="rule_code"><%= rule.code %></textarea> -->
+							<%= text_area_tag "rules[]", rule.code, :cols => "90", :rows => "20" %>
+              <br class="clear"/>
+            </div>
+            <!-- .section-edit -->
+          </div>
+          <!-- .app-section -->
+      <% end %>
+      <!-- hidden html used for creating new rule area -->
+      <div id="app-section-template">
+        <div class="app-section">
+          <div class="section-header">
+            <img src='/images/minimize.png'/>
+
+            <h2>{Rule Name}</h2>
+            <span class="handle"><img src="/images/move.png"/></span>
+          </div>
+          <!-- .section-header -->
+          <div class="section-edit">
+            <div class='section-controls'>
+              <img class="delete-rule" src="/images/delete.png"/>
+            </div>
+            <textarea cols="90" rows="20"></textarea>
+            <br class="clear"/>
+          </div>
+          <!-- .section-edit -->
+        </div>
+        <!-- .app-section -->
+      </div>
+    </div><!-- #rules -->
+
+    <%=submit_tag%>
+<% end %>

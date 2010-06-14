@@ -1,0 +1,10 @@
+<td colspan='5'>
+	<%= form_tag "/deploy_app/version_note" %>
+		<%= label_tag :note, "Note: " %>
+		<%= text_field_tag :note, version["note"].to_s, :size => 100 %>
+		<%= hidden_field_tag :id, @ruleset_id %>
+		<%= hidden_field_tag :version, version["version"] %>
+		<%= submit_tag "Ok" %>
+		<%= submit_tag "Cancel", :onclick => "closeRow(this);return false;" %>
+	</form>
+</td>

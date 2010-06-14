@@ -1,0 +1,18 @@
+<td colspan=3>
+	<%= link_to "Share", "#", :onclick => "$('#share').slideToggle()" %>
+	<div id="share" style="display:none">
+		<span style="float:right">
+			<%= link_to image_tag("close.png", :style => "width:20px;height:20px"), "#", :onclick => "$('#share').slideToggle()" %>
+		</span>
+		<h2>Share</h2>
+		<%= form_tag "/manage_app/share" %>
+			<%= hidden_field_tag :id, current_application.application_id %>
+			<%= label_tag :email, "Email Address" %><br>
+			<%= text_field_tag :email %><br>
+			<%= label_tag :message, "Message" %><br>
+			<%= text_area_tag :message, ".", :cols => 30, :rows => 5 %><br>
+			<%= submit_tag "Send" %>
+	
+		</form>
+	</div>
+</td>

@@ -1,0 +1,12 @@
+#source_viewer {
+	background-color: whiteSmoke;
+	border: 1px solid black;
+	left: 100px;
+	padding: 10px;
+	position: absolute;
+/*	width: 600px;*/
+}
+
+#note {
+  width: 580px;
+}

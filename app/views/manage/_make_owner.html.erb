@@ -1,0 +1,14 @@
+<td colspan=3>
+	Ownership transfers must be confirmed by the new owner before it is complete. Please provide a message to
+	accompany your transfer request.
+	<br><br>
+	<%= form_tag "/manage_app/transfer_owner" %>
+		<%= hidden_field_tag :id, current_application.application_id %>
+		<%= hidden_field_tag :userid, user["kynetxuserid"] %>
+		<%= hidden_field_tag :name, current_application.name %>
+		<%= text_area_tag :message, "", :style => "width: 300px; height: 100px" %><br>
+		<%= submit_tag "Transfer" %>
+		<%= submit_tag "Cancel", :onclick => "closeRow(this);return false;" %>
+	
+	</form>
+</td>

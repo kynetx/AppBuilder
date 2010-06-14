@@ -1,0 +1,7 @@
+<%= app_menu :distribute, params[:id] %>
+<h1>Distribute your app</h1>
+<%= link_to "InfoCard", :controller => "distribute_app", :action => "infocard", :id => params[:id] %><br>
+<%= link_to "Bookmarklet", :controller => "distribute_app", :action => "bookmarklet", :id => params[:id] %><br>
+<%= link_to "Browser Extension", :controller => "distribute_app", :action => "extension", :id => params[:id] %><br>
+<%= link_to "Site Tags", :controller => "distribute_app", :action => "tags", :id => params[:id] %><br>
+<%= link_to "Marketplace", :controller => "distribute_app", :action => "marketplace", :id => params[:id] %><br>

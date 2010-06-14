@@ -1,0 +1,63 @@
+<%= app_menu :distribute, params[:id], "Bookmarklet" %>
+<% stylesheet "distribute" %>
+<style type="text/css" media="screen">
+  #bookmarklet-stuff, #info-card-stuff {
+    margin: 0 0 30px 40px;
+  }
+  #bookmarklet {
+    display:block;
+    font-size:20px;
+    margin:10px;
+  }
+  #bookmarklet-source {
+    display: none;
+  }
+  h1 {
+    margin-top: 20px;
+    font-weight: normal; 
+  }
+  #about {
+    color:#333333;
+    margin-top:20px;
+    width:370px;
+  }
+  #grab-me {
+    background-color: #F2F2F2;
+    width: -moz-fit-content;
+    -moz-border-radius:5px 5px 5px 5px;
+    float: left;
+    margin: 10px 0;
+  }
+  #embed-bookmarklet {
+    height:109px;
+    width:468px;
+  }
+</style>
+<script type="text/javascript" charset="utf-8">
+$(document).ready(function() {
+  $("#source").click(function() {
+    $("#bookmarklet-source").slideToggle();
+  });
+});
+</script>
+<h1>Production Bookmarklet</h1>
+<div id="bookmarklet-stuff">
+  <p>Drag the link below to your browser <a id="source">(source)</a></p>
+  <div id="grab-me">
+    <%= link_to "#{current_application.name}", @bookmarklet , :id => "bookmarklet"%>
+  </div>
+  <br class="clear"/>
+  <textarea id="bookmarklet-source" class="simple_surround" readonly="true">
+    <%= @bookmarklet %>
+  </textarea>
+  <p>Or copy the following code and paste it into an HTML page for others to use:</p>
+
+  <div class="simple_surround">
+  	<textarea readonly="true" id="embed-bookmarklet" >
+  &lt;a href="<%= @bookmarklet %>"&gt;<%= current_application.name %>&lt;/a&gt;
+  	</textarea>
+  </div>
+  
+</div>
+
+<p id="about">** Production endpoints always run the version of the application that is marked as production and should be used for distribution. For test endpoints goto the test page</p>

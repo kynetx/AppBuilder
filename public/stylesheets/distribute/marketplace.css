@@ -1,0 +1,56 @@
+#mp {
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+#mpleft .info_label {
+	font-weight: bold;
+}
+
+#mpleft {
+	float: left;
+	margin-right: 15px;
+	font-size: 12px;
+}
+
+#mpleft img {
+	border: 1px solid #CCC;
+}
+
+#mpinfo {
+	float:left;
+	width: 400px;
+}
+
+#mpinfo .title {
+	font-size: 25px;
+}
+
+#mpdescription {
+	border: 1px solid #CCC;
+	width: 450px;
+	padding: 6px;
+	margin-top: 10px;
+}
+
+#current_price {
+	font-size: 12px;
+}
+
+#price {
+	margin-top: 0px;
+	font-size: 17px;
+	color:#2988C0;
+}
+
+#promo_price {
+	font-size:17px;
+	/*  margin-left:13px;*/
+	margin-top:6px;
+	color: #AA1B1D;
+}
+
+.instructions {
+	display: block;
+	width: 500px;
+	
+}

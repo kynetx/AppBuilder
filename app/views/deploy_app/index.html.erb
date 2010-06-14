@@ -1,0 +1,44 @@
+<% stylesheet "deploy" %>
+<%= app_menu :deploy, params[:id] %>
+
+<div id="source_viewer" style="display:none"></div>
+<%= quick_table @versions.reverse, [
+	{:field => "Version", :value => lambda{|v| 
+		link_to(v["version"], "#", :onclick => "showSource('#{@ruleset_id}', #{v["version"]})") + 
+		"&nbsp;&nbsp;&nbsp;&nbsp;" + 
+		"<span id='loading_#{v["version"]}' style='display:none;'>" + 
+		image_tag("loading_small.gif", :style=>"height:12px") + 
+		"</span>"}},
+	{:field => "User", :value => lambda{|v| v["name"] }},
+	{:field => "Date", :value => lambda{|v| v["created"] }},
+	{:field => "Note", :value => lambda{|v| note_helper(v) }},
+	{:field => "Production", :value => lambda {|v| v["version"] == @prod_version ? "Production" : 
+		link_to("Deploy", :controller => "deploy_app", :action => "deploy_version", 
+			:id => @ruleset_id, :version => v["version"] ) }}
+	],
+	:altrow => {
+		:opts => {:class => "altrow", :style => "display:none;"}, 
+		:value => lambda {|v| render :partial => "edit_note", :locals => {:version => v}}	
+	}%>
+	
+
+<script type="text/javascript" charset="utf-8">
+	
+	function showSource(ruleset_id, version) {
+		//console.log(ruleset_id);
+		//console.log(version);
+		params = {id: ruleset_id, version: version};
+		$.ajax({
+			url: '/deploy_app/version_source',
+			data: params,
+			beforeSend: function() {$("#loading_" + version).show();},
+			success: function(data) {				
+				$("#source_viewer").html(data).slideDown("fast");
+			},
+			complete: function() {$("#loading_" + version).hide();},
+			error: function() {alert("There was a problem getting your source. We are on it!")}
+		});
+	}
+	
+	
+</script>

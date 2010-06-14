@@ -1,0 +1,58 @@
+<%= stylesheet "distribute/marketplace" %>
+<%= app_menu :distribute, params[:id], "Marketplace" %>
+<%= image_tag("http://mpcontent.kynetx.com/marketplace/kynetx-marketplace.png") %>
+<br><br>
+<% if @found %>
+
+	<div id="mpleft">
+		<% if @listing["image_url"].include?("icon") && @listing["image_url"].include?("missing") %>
+			<%= image_tag("http://appresource.s3.amazonaws.com/apiappimages/missing.png") %><br>
+		<% else %>
+			<%= image_tag(@listing["image_url"]) %><br>
+		<% end %>
+		<span class="info_label">Category: </span><%= @listing["category"] %><br>
+		<span class="info_label">Version: </span><%= @listing["version"] %><br>
+		<span class="info_label">Active: </span><%= @listing["active"] %><br>
+		<span class="info_label">Percent Complete: </span><%= @listing["percent_completed"] %><br>
+		<span class="info_label">Owner: </span><%= @listing["owner"] %><br>
+		<span class="info_label">Seller: </span><%= @listing["selling_as"] %><br>		
+	</div>
+	<div id="mpinfo">
+		<%= link_to(@listing["name"], @listing["url"], {:class => "title", :target => "_blank"}) %><br>
+		<% if @price["on_promotion"] %>
+      <span id='promo_price'><%= h @price["recurring"] ? as_price( @price["promotion_price"], 1) : as_price( @price["promotion_price"]) %></span>
+      <span id='price' style="text-decoration: line-through; color: 494949; font-size: 12px; display: block" ><%= as_price(@price["regular_price"], 1) %></span>&nbsp;
+    <% else %>
+        <span id='price'><%= h @price["recurring"] ? as_price(@price["regular_price"], 1) : as_price(@price["regular_price"]) %></span>
+    <% end %>
+		
+		<div id="mpdescription">
+			<%= @listing["description"] %>
+		</div>		
+	</div>
+
+
+<% else %>
+
+	<% if ! current_user.owns_current? %>
+		<p>You must be the owner of this app to list it in the marketplace. Please request ownership from the owner. 
+			You can view the owner by clicking on "<%= link_to "Manage", manage_path(current_application.application_id) %>".</p>
+	<% else %>
+		<h1>Sell your app on Marketplace!</h1>
+		<% if @mp_user_found && @mp_user["is_seller"] %>
+		<div class="instructions">This application is ready to list.  <strong>If you plan to charge for your application that you will need to
+			add "authz require user" (without the quotes) to the meta section of your application.</strong> This will require users of your application to activate
+			the application and prove their purchase before they can use it.</p>
+		<br>
+		<p><%= link_to("List your application", :controller => "distribute_app", :action => "list_app", :id => current_application.application_id) %></p>
+		
+		<% else %>
+			<p>You need to sign up as a Marketplace Seller before you can list your apps on the Kynetx Marketplace.  
+				To do so, please visit the <%= link_to("Seller Information Page", MARKETPLACE_URL + "/store/help/becomeseller") %>.</p>
+		
+		<% end %>
+	
+	<% end %>
+<% end %>
+<br><br><br>
+<div class="clear"></div>

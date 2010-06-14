@@ -1,0 +1,64 @@
+<% stylesheet "manage.css" %>
+<%= app_menu :manage, params[:id] %>
+
+
+<h1>App Image</h1>
+<div id="change_image">
+	<%= image_tag current_application.image_url %>
+	<div id="image_form">
+		<%= form_tag "/manage_app/add_image", :multipart => true %>
+			<%= hidden_field_tag :id, current_application.application_id %>
+			<%= file_field_tag :image %>
+			<%= submit_tag "Save" %>
+		</form>
+		<br/>
+		<p>For best results, choose a 120x120px image. <br><strong>If you plan to distribute this application as an InfoCard, your image must be a 240x160px jpg.</strong></p>
+	</div>
+</div>
+<div class="clear"></div>
+<hr />
+
+	<h1>App Edit Permissions & Ownership</h1>
+<div id="users">	
+	<%= quick_table current_application.users, [
+		{:field => "User", :value => lambda{ |u| "#{u["firstname"]} #{u["lastname"]}" }},
+		{:field => "Role", :value => lambda{ |u| u["role"] }},
+		{:field => "Actions", :value => lambda { |u| manage_actions_helper(u) }}
+	],
+	:lastrow => {
+		:opts => {:style => "background-color: whitesmoke;"},
+		:value => lambda { render :partial => 'share_form' }
+	},
+	:altrow => {
+		:opts => {:style => "background-color: whitesmoke; display:none"},
+		:value => lambda { |u| render :partial => "make_owner", :locals => {:user => u} }
+	} %>
+	
+	<% if ! current_application.invites.empty? %>
+		<br><br>
+		<h2>Pending Invites</h2>
+		<%= quick_table current_application.invites, [
+			{:field => "Email Address", :value => lambda { |i| i["email"] }},
+			{:field => "Actions", :value => lambda { |i| link_to "Revoke", 
+				:controller => "manage",
+				:action => "cancel_invite",
+				:id => current_application.application_id,
+				:invite_id => i["appinviteid"] }}
+			]%>
+	<% end %>
+	
+	<% if current_application.transfer_request["pending"] != false %>
+		<br><br>
+		<h2>Pending Ownership Transfer</h2>
+		<p>An ownership transfer has been sent to <%= current_application.transfer_request["to"] %>
+			 on <%#= DateTime.strptime(current_application.transfer_request["sent"]).strftime("%Y-%m-%d") %>.
+		</p>
+		<br>
+		<p><%= link_to "Revoke this transfer", :controller => "manage",
+		 	:action => "cancel_transfer", 
+			:id => current_application.application_id,
+			:transferrequestid => current_application.transfer_request["transferrequestid"] %></p>
+	<% end %>
+</div>
+
+

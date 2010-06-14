@@ -1,0 +1,32 @@
+<% stylesheet "distribute" %>
+<%= app_menu :distribute, params[:id], "Browser Extension" %>
+
+<!-- TODO: Do we still need this? -->
+<!-- <p>Please send any issues that you are having to support@kynetx.com. In the event you are unable to build an extension please use a bookmarklet.</p> -->
+<div id="extension_form">
+	<%= form_tag :controller => "distribute_app", :action => "gen_extension" %>
+		<%= hidden_field_tag :id, current_application.application_id %>
+		<%= label_tag :name, "Extension Name" %>
+		<%= text_field_tag :name, "#{current_application.name}" %>
+		<br>
+		<%= label_tag :author, "Extension Author" %>
+		<%= text_field_tag :author, "#{current_user.name}" %>
+		<br>
+		<%= label_tag :description, "Extension Description" %>
+		<%= text_field_tag :description %>
+		<br><br>
+		<p>NOTE: Creating an extension can take up to 15 seconds to complete.</p>
+		<br>
+		<input type="image" src="/images/ie.png" name="ie" value="ie">
+		<br>
+		<input type="image" src="/images/ff.png" name="ff" value="ff">
+		<br>
+		<input type="image" src="/images/cr.png" name="cr" value="cr">
+	</form>	
+</div>
+
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function() {
+		$("#name").focus();
+	});
+</script>

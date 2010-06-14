@@ -1,0 +1,46 @@
+<%= javascript "jquery.hotkeys-0.7.9.min.js" %>
+<%= javascript "qs_score.js" %>
+<%= javascript "apps.js" %>
+<%= stylesheet "applist/apps.css" %>
+<% title "Applications" %>
+<div id="main-content">
+  <div id="list-controls">
+    <div class="left">
+      <h1 id="page-title">Applications</h1>
+    </div><!-- .left -->
+    <div class="right">
+      <div id="new-app">
+        <button id="i-want-a-new-app">New App</button>
+        <div id="new-app-meta">
+          <p>Name:</p>
+          <%= form_tag "applications", :method => :post %>
+            <input name="name" id="new-app-name" />
+            <p>Description: (optional)</p>
+            <textarea name="description" id="new-app-description"></textarea>
+            <input type="submit" value="create" id="create" />
+          </form>
+          <button id="cancel">Never mind</button>
+        </div>
+      </div>
+      <div class="search">
+        <img src="/images/search.png" />
+        <input type="text" id="find" />
+        <select>
+          <option value="name">Name</option>
+          <option value="id">ID</option>
+          <option value="role">Role</option>
+        </select>
+      </div>
+    </div><!-- .right -->
+    <br class="clear" />
+  </div><!-- #list-controls -->
+  <%= quick_table @applications["apps"], [
+    {:field => "", :width => 55, :value => lambda{|a| image_tag a["images"].nil? ? "http://appresource.s3.amazonaws.com/apiappimages/missing_thumb.png" : a["images"]["thumb"] }},
+    {:field => "Ruleset ID", :width => 75, :value => lambda{|a| link_to a["appid"], edit_application_path(a["appid"]) }},
+  	{:field => "Application Name", :value => lambda{|a| link_to a["name"].to_s, edit_application_path(a["appid"]) }},
+  	{:field => "BRSE", :value => lambda{|a| "-"}},
+  	{:field => "Role", :width => 75, :value => lambda{|a| a["role"] }},
+  	{:field => "Actions", :width => 100, :value => lambda{|a| application_actions(a) }}
+  	]
+	%>
+</div><!-- #main-content -->
