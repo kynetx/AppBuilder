@@ -89,7 +89,7 @@ function saveApp() {
       }
       $("unknown-error").html("");
       try {
-        console.log(x.responseText);
+        //console.log(x.responseText);
       } catch(e) {
         
       }

@@ -55,7 +55,7 @@ function saveApp() {
   $("#saving").show();
   var appid = $("#editor").attr("appid");
   var krl = $("textarea").val();
-  console.log(krl);
+  //console.log(krl);
   $.ajax({
     url: "/applications/" + appid + "/update",
     type: "PUT",
@@ -80,7 +80,7 @@ function saveApp() {
         $("#error-tray, #close-error-tray").fadeIn();
       }
       $("unknown-error").html("");
-      console.log(x.responseText);
+      //console.log(x.responseText);
       if(!/^655:/.test(x.responseText)) {
         var kline = [];
         var kerror = [];
