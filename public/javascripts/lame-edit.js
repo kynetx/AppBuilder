@@ -1,7 +1,7 @@
 // WHEN DOM IS READY
 $(document).ready(function() {
   $("textarea, #control-tray").height($(window).height()-90);
-  $("textarea").width($(window).width()-55);
+  $("textarea").width($(window).width()-100);
   
   $("textarea").tabby();
   
