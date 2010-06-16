@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
   	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
     <title><%= h(yield(:title) || "Kynetx appbuilder") %></title>
@@ -8,6 +8,7 @@
     <%= stylesheet_link_tag 'application' %>
     <%= yield(:head) %>
     <script type="text/javascript">
+    //<![CDATA[
 		onerror = function(msg,url,l){
 			var txt="_s=ce89e0c606b93b3ba2b8eff64b61cc41&_r=img";
 			txt+="&Msg="+escape(msg);
@@ -20,13 +21,14 @@
 				"https://errorstack.appspot.com" : "http://www.errorstack.com") + "/submit?" + txt);
 			document.body.appendChild(i);
 		}
+    //]]>
 		</script>
   </head>
   <body>
     <div id="container">
       <div id="branding">
         <div id="appbuilder-logo">
-          <a href="/"><img src="/images/appbuilder-logo.png" alt="Knetx appbuilder"></a>
+          <%= link_to  image_tag("appbuilder-logo.png", :alt => "Kynetx appbuilder" ), root_url %>
         </div>
         <div id="usernav">
   				<% if current_user %>	
