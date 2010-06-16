@@ -1,7 +1,7 @@
 // WHEN DOM IS READY
 $(document).ready(function() {
-  $("textarea, #control-tray").height($(window).height()-90);
-  $("textarea").width($(window).width()-55);
+  $("textarea, #control-tray").height($(window).height()-100);
+  $("textarea").width($(window).width()-100);
   
   $("textarea").tabby();
   
@@ -41,8 +41,8 @@ $(document).ready(function() {
 function resizeMe() {
   var width = $(window).width();
   width = (width < 700) ? 700 : width;
-  $("textarea, #control-tray").height($(window).height()-90);
-  $("textarea").width(width-55);
+  $("textarea, #control-tray").height($(window).height()-100);
+  $("textarea").width(width-100);
 }
 
 ////////////////////////////
