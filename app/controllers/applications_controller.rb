@@ -20,6 +20,7 @@ class ApplicationsController < ApplicationController
         render :text => response
       end
     rescue => e
+      Rails.logger.error "APP UPDATE ERROR:\n #{e.message}\n#{e.backtrace}"
       render :status => 400, :text => e
     end
   end
