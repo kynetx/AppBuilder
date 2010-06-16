@@ -1,3 +1,5 @@
+try {
+
 var ENV={platform:"classic",mode:"production"},SC=SC||{BUNDLE_INFO:{},LAZY_INSTANTIATION:{}};SC.json=JSON;
 SC.browser=function(){var a=navigator.userAgent.toLowerCase(),b=(a.match(/.+(?:rv|it|ra|ie)[\/: ]([\d.]+)/)||[])[1];a={version:b,safari:/webkit/.test(a)?b:0,opera:/opera/.test(a)?b:0,msie:/msie/.test(a)&&!/opera/.test(a)?b:0,mozilla:/mozilla/.test(a)&&!/(compatible|webkit)/.test(a)?b:0,mobileSafari:/apple.*mobile.*safari/.test(a)?b:0,windows:!!/(windows)/.test(a),mac:!!(/(macintosh)/.test(a)||/(mac os x)/.test(a)),language:(navigator.language||navigator.browserLanguage).split("-",1)[0]};a.current=
 a.msie?"msie":a.mozilla?"mozilla":a.safari?"safari":a.opera?"opera":"unknown";return a}();SC.bundleDidLoad=function(a){var b=this.BUNDLE_INFO[a];b||(b=this.BUNDLE_INFO[a]={});b.loaded=true};SC.bundleIsLoaded=function(a){return(a=this.BUNDLE_INFO[a])?!!a.loaded:false};SC.loadBundle=function(){throw"SC.loadBundle(): SproutCore is not loaded.";};
@@ -1345,3 +1347,8 @@ type:"plugins/supported",name:"keylistener"},events:{resourceURL:"resources/even
 ep:"extensionpoint",name:"type"},{description:"Text that the user needs to enter.",pointer:"basic#text",ep:"type",name:"text"},{description:"A JavaScript number",pointer:"basic#number",ep:"type",name:"number"},{description:"A true/false value",pointer:"basic#bool",ep:"type",name:"boolean"},{description:"An object that converts via JavaScript",pointer:"basic#object",ep:"type",name:"object"},{description:"A string that is constrained to be one of a number of pre-defined values",pointer:"basic#selection",
 ep:"type",name:"selection"},{description:"A type which we don't understand from the outset, but which we hope context can help us with",ep:"type",name:"deferred"}],type:"plugins/supported",name:"types"},syntax_manager:{resourceURL:"resources/syntax_manager/",description:"Provides syntax highlighting services for the editor",dependencies:{rangeutils:"0.0",delegate_support:"0.0"},testmodules:[],provides:[{register:"controllers/syntaxdirectory#discoveredNewSyntax",ep:"extensionhandler",name:"syntax"},
 {indexOn:"name",ep:"extensionpoint",name:"fileextension"}],type:"plugins/supported",name:"syntax_manager"}})});SC.ready(function(){for(var a=tiki.require("embedded"),b=document.querySelectorAll(".bespin"),c=0;c<b.length;c++){var d=b[c],e=d.getAttribute("data-bespinoptions");d.bespin=a.useBespin(d,JSON.parse(e))}window.onBespinLoad&&window.onBespinLoad()});document.addEventListener("DOMContentLoaded",SC.didLoad,false);window.tiki=tiki;
+
+
+} catch(e) {
+
+}
