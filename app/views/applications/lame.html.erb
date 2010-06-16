@@ -2,9 +2,11 @@
 <%= javascript "tabby.js" %>
 <%= javascript "lame-edit.js" %>
 <%= stylesheet "lame-edit.css" %>
+<% content_for :head do %>
 <!--[if IE 7]>
-<%= stylesheet "lame-ie-7.css" %>
+  <style type="text/css" media="screen" src="/stylesheets/lame-ie-7.css"></style>
 <![endif]-->
+<% end %>
 <%= app_menu :edit, params[:id] %>
 <div id="editor" appid="<%= @application.application_id %>">
   <div id="control-tray">
