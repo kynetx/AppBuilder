@@ -2,7 +2,7 @@
 $(document).ready(function() {
   // REDIRECT IF INCOMPATIBLE BROWSER
   if($.browser.msie || $.browser.opera) {
-    window.location.href = $("#lame").attr("href");
+    window.location.href = /(.*)edit$/.exec(window.location.href)[1] + "lame";
   }
   
   // set bespin window sizes before bespin loads

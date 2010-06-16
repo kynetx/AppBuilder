@@ -1,7 +1,15 @@
+// WHEN PAGE IS LOADED
+$(window).load(function() {
+  if($.browser.msie) {
+    $(".body_content").css({"position":"absolute"});
+  }
+});
+
+
 // WHEN DOM IS READY
 $(document).ready(function() {
-  $("textarea, #control-tray").height($(window).height()-100);
-  $("textarea").width($(window).width()-100);
+  $("textarea, #control-tray").height($(window).height()-130);
+  $("textarea").width($(window).width()-160);
   
   $("textarea").tabby();
   
@@ -41,8 +49,8 @@ $(document).ready(function() {
 function resizeMe() {
   var width = $(window).width();
   width = (width < 700) ? 700 : width;
-  $("textarea, #control-tray").height($(window).height()-100);
-  $("textarea").width(width-100);
+  $("textarea, #control-tray").height($(window).height()-130);
+  $("textarea").width(width-60);
 }
 
 ////////////////////////////
