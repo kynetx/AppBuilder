@@ -97,7 +97,6 @@ function saveApp() {
       } catch(e) {
         
       }
-      console.log(x.responseText);
       $("#error-tray #error").append(x.responseText);
     }
   });
