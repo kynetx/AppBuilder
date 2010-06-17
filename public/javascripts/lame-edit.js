@@ -8,6 +8,9 @@ $(window).load(function() {
 
 // WHEN DOM IS READY
 $(document).ready(function() {
+  // set focus to textarea
+  $("#app").focus();
+  
   $("textarea, #control-tray").height($(window).height()-130);
   $("textarea").width($(window).width()-160);
   
@@ -63,7 +66,9 @@ function saveApp() {
   $("#saving").show();
   var appid = $("#editor").attr("appid");
   var krl = $("textarea").val();
-  //console.log(krl);
+
+  $("#error-tray").hide();
+  $("#error").html("");
   $.ajax({
     url: "/applications/" + appid + "/update",
     type: "PUT",
@@ -81,42 +86,22 @@ function saveApp() {
       $("#last-save").show().text(hours+":"+minutes);
     },
     error: function(x, s, e) {
+      // Hide stuff now that save attempt is complete
       $("#saving, #success, #good").hide();
+      // show indicator for save failure
       $("#fail").show().fadeOut(3000);
       $("#warning").show();
-      if(hideErrorTray == 0) {
+      if(hideErrorTray==0) {
         $("#error-tray, #close-error-tray").fadeIn();
       }
       $("unknown-error").html("");
-      //console.log(x.responseText);
-      if(!/^655:/.test(x.responseText)) {
-        var kline = [];
-        var kerror = [];
-        var kmeta = [];
-        var rt = x.responseText;
-        var splitErrors = rt.split(/(Line [0-9]:)/);
-        for( var i=1; i<splitErrors.length; i++) {
-          // errors are in odd positions of array
-          if( i % 2 != 0 ) {
-            kline.push(splitErrors[i]);
-          } else {
-            var errorMeta = /([a-z,A-Z,\s]+:)(.*)/.exec(splitErrors[i]);
-            kerror.push(errorMeta[1]);
-            kmeta.push(errorMeta[2]);
-          }
-        }
-        for( var i=0; i<kline.length; i++ ) {
-          var output = "<tr><td class='error'>" + kerror[i] + "</td>";
-          output += "<td class='line'>" + kline[i] + "</td>";
-          output += "<td class='meta'></td></tr>";
-          $("#error-tray table").append(output).find(".meta:last").text(kmeta[i]);
-        }
-      } else {
-        // errors other than syntax errors
-        onerror("Saving app failed. App ID: " + $("#editor").attr("appid") + ". Length of app: " + krl.length, document.location.href, 573649);
-        $("#unknown-error").html("There has been an error in saving your app. This error has been logged so we can try to fix it. If this error continues, please notify us with details at <a href='mailto:support@kynetx.com'>support@kynetx.com</a>");
-        toggleErrorTray();
+      try {
+        //console.log(x.responseText);
+      } catch(e) {
+        
       }
+      console.log(x.responseText);
+      $("#error-tray #error").append(x.responseText);
     }
   });
   return false;

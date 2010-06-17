@@ -60,6 +60,8 @@ $(window).load(function() {
 $("#close-error-tray, #warning").live("click", toggleErrorTray);
 
 function saveApp() {
+  $("#error-tray").hide();
+  $("#error").html("");
   // insert spinner here
   $("#saving").show();
   var appid = $("#editor").attr("appid");
@@ -81,7 +83,9 @@ function saveApp() {
       $("#last-save").show().text(hours+":"+minutes);
     },
     error: function(x, s, e) {
+      // Hide stuff now that save attempt is complete
       $("#saving, #success, #good").hide();
+      // show indicator for save failure
       $("#fail").show().fadeOut(3000);
       $("#warning").show();
       if(hideErrorTray==0) {
@@ -93,34 +97,8 @@ function saveApp() {
       } catch(e) {
         
       }
-      if(!/^655:/.test(x.responseText)) {
-        var kline = [];
-        var kerror = [];
-        var kmeta = [];
-        var rt = x.responseText;
-        var splitErrors = rt.split(/(Line [0-9]:)/);
-        for( var i=1; i<splitErrors.length; i++) {
-          // errors are in odd positions of array
-          if( i % 2 != 0 ) {
-            kline.push(splitErrors[i]);
-          } else {
-            var errorMeta = /([a-z,A-Z,\s]+:)(.*)/.exec(splitErrors[i]);
-            kerror.push(errorMeta[1]);
-            kmeta.push(errorMeta[2]);
-          }
-        }
-        for( var i=0; i<kline.length; i++ ) {
-          var output = "<tr><td class='error'>" + kerror[i] + "</td>";
-          output += "<td class='line'>" + kline[i] + "</td>";
-          output += "<td class='meta'></td></tr>";
-          $("#error-tray table").append(output).find(".meta:last").text(kmeta[i]);
-        }
-      } else {
-        // errors other than syntax errors
-        onerror("Saving app failed. App ID: " + $("#editor").attr("appid") + ". Length of app: " + bespin.value.length, document.location.href, 573649);
-        $("#error-tray table").html("");
-        $("#unknown-error").html("There has been an error in saving your app. This error has been longed so we can try to fix it. If this error continues, please notify us with details at <a href='mailto:support@kynetx.com'>support@kynetx.com</a>");
-      }
+      console.log(x.responseText);
+      $("#error-tray #error").append(x.responseText);
     }
   });
   return false;
