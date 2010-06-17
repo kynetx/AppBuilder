@@ -1,4 +1,23 @@
 $(document).ready(function() {
+  // stick a pencil in your eye and then everything looks better on Windows and IE
+  if(true) { //if($.browser.msie) {
+    var rowCount = 0;
+    $(".qtable tr").each(function() {
+      if(rowCount != 0) {
+        var prelink = $(this).find("td:eq(1) a").attr("href");
+        var link = /(.*)edit$/.exec(prelink);
+        link = (link + "").split(",")[1] + "lame";
+        try {
+          $(this).find("td:eq(1) a").attr("href",link);
+        } catch(e) {}
+        try {
+          $(this).find("td:eq(2) a").attr("href",link);
+        } catch(e) {}
+      }
+      rowCount++;
+    });
+  }
+  
   $("#find").val("CTRL + F");
   $("tr:even").css({"background-color":"#F2F2F2"});
   $(document).bind('keydown', 'ctrl+f', jumpToFind);
