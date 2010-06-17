@@ -1,6 +1,6 @@
 $(document).ready(function() {
   // stick a pencil in your eye and then everything looks better on Windows and IE
-  if(true) { //if($.browser.msie) {
+  if($.browser.msie) {
     var rowCount = 0;
     $(".qtable tr").each(function() {
       if(rowCount != 0) {
