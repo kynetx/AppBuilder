@@ -80,7 +80,8 @@ body > img {
 }
 
 #close-error-tray {
-  float: right;
+  cursor:pointer;
+  float:right;
 }
 
 .keyboard-tip {
