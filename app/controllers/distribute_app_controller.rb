@@ -20,13 +20,23 @@ class DistributeAppController < ApplicationController
       extension_type = "ie"
     end
     
-    ext = current_application.extension(extension_type, params[:name].to_s, params[:author].to_s, params[:description].to_s)
+    opts = {}
+    opts[:extname] = params[:name] unless params[:name].blank?
+    opts[:extauthor] = params[:author] unless params[:author].blank?
+    opts[:extdesc] = params[:description] unless params[:description].blank?
+    opts[:force_build] = 'Y' if params[:force]
+    opts[:format] = 'url'
+
+
+    ext = current_application.endpoint(extension_type, opts)
     
     if ext["errors"].empty?
-      return send_data Base64.decode64(ext["data"]), :filename => ext["file_name"], :type => ext["content_type"]
+      redirect_to ext["data"]
+    else
+      flash[:error] = "Unable to generate your extension. Error: #{ext["errors"].join(" ")}"
+      redirect_to :action => "extension"
     end
     
-    render :text => ext
   end
   
   def infocard
@@ -35,16 +45,23 @@ class DistributeAppController < ApplicationController
   
   def gen_infocard
     next_page = "" 
-    
-    if params[:name].blank?
-      flash[:error] = "Please provide a name for your card."      
+    puts "PARAMS: #{params.inspect}"
+    opts = {}
+    opts[:extname] = params[:name] unless params[:name].blank?
+    opts[:datasets] = params[:datasets] unless params[:datasets].blank?
+    opts[:env] = params[:env] unless params[:env].blank?
+    opts[:force_build] = 'Y' if params[:force]
+    opts[:format] = 'url'
+
+    card = current_application.endpoint("info_card", opts)
+
+    if card["errors"].empty?
+      redirect_to card["data"]
     else
-      env = params[:env] ? params[:env] : "prod"
-      card = current_application.infocard(params[:name], params[:datasets], env)
-      puts card.inspect
-      return send_data  Base64.decode64(card["data"]), :filename => card["file_name"], :type => card["content_type"]
+      flash[:error] = "Unable to generate your InfoCard. Error: #{ext["errors"].join(" ")}"
+      redirect_to :action => "infocard"
     end
-    redirect_to :action => "infocard"
+    
   end
   
   
@@ -53,7 +70,13 @@ class DistributeAppController < ApplicationController
   end
   
   def bookmarklet
-    @bookmarklet = current_application.bookmarklet
+    bm = current_application.endpoint("bookmarklet")
+    if bm["errors"].empty?
+      @bookmarklet = bm["data"]
+    else
+      @bookmarklet = ""
+      flash[:error] = "There was an error generating your bookmarklet. #{bm["errors"].join(" ")}"
+    end
   end
   
   def marketplace

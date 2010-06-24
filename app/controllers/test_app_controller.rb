@@ -1,7 +1,13 @@
 class TestAppController < ApplicationController
   before_filter :logged_in
   def index
-    @bookmarklet = current_application.bookmarklet("dev", "init.kobj.net/js/shared/kobj-static.js")
+    bm = current_application.endpoint("bookmarklet", :env => 'dev')
+    if bm["errors"].empty?
+      @bookmarklet = bm["data"]
+    else 
+      @bookmarklet = ""
+      flash[:error] = "There was an error generating your bookmarklet. #{bm["errors"].join(" ")}"
+    end
   end
 
 end

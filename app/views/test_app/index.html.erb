@@ -67,6 +67,9 @@ $(document).ready(function() {
   		<%= label_tag :datasets, "DataSet Key" %>
   		<%= text_field_tag :datasets %>
   		<br>
+      <%= check_box_tag :force %>
+      Force a rebuild of the InfoCard
+      <br>
   		<%= submit_tag "Make Card" %>
   	</form>
   	<br><br>

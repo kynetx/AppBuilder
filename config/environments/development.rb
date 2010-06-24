@@ -18,7 +18,7 @@ config.action_mailer.raise_delivery_errors = false
 
 config.log_level = :debug
 
-# $DEBUG = true
+$DEBUG = true
 
 require 'yaml'
 appbuilder_config = YAML.load_file(File.join(RAILS_ROOT,'config','appbuilder.yml'))
