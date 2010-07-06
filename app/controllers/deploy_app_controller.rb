@@ -9,7 +9,7 @@ class DeployAppController < ApplicationController
     
     @ruleset_id = params[:id]
     @app = current_application
-    @versions = @app.versions
+    @versions = @app.versions.reverse
     @prod_version = @app.production_version
   end
   
