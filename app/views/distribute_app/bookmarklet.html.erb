@@ -54,7 +54,7 @@ $(document).ready(function() {
 
   <div class="simple_surround">
   	<textarea readonly="true" id="embed-bookmarklet" >
-  &lt;a href="<%= @bookmarklet %>"&gt;<%= current_application.name %>&lt;/a&gt;
+  &lt;a href="<%= @bookmarklet.gsub('"', "&quot;") %>"&gt;<%= current_application.name %>&lt;/a&gt;
   	</textarea>
   </div>
   
