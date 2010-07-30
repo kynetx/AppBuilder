@@ -53,9 +53,7 @@ $(document).ready(function() {
   <p>Or copy the following code and paste it into an HTML page for others to use:</p>
 
   <div class="simple_surround">
-  	<textarea readonly="true" id="embed-bookmarklet" >
-  &lt;a href="<%= @bookmarklet.gsub('"', "&quot;") %>"&gt;<%= current_application.name %>&lt;/a&gt;
-  	</textarea>
+  	<textarea readonly="true" id="embed-bookmarklet" >&lt;a href="<%= @bookmarklet.gsub('&quot;', "&amp;quot;") %>"&gt;<%= current_application.name %>&lt;/a&gt;</textarea>
   </div>
   
 </div>
