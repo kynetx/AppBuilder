@@ -1,9 +1,6 @@
 // WHEN DOM IS READY
 $(document).ready(function() {
-  // REDIRECT IF INCOMPATIBLE BROWSER
-  if($.browser.msie || $.browser.opera) {
-    window.location.href = /(.*)edit$/.exec(window.location.href)[1] + "lame";
-  }
+
   
   // set bespin window sizes before bespin loads
   $("#bespin-to-be, #control-tray").height($(window).height()-90);
@@ -52,6 +49,10 @@ function resizeMe() {
 $(window).load(function() {
   window.bespin = document.getElementById("bespin-to-be").bespin;
   window.bespin.value = $("textarea").text();
+  // REDIRECT IF INCOMPATIBLE BROWSER
+  if(!$("#bespin-to-be>div").length) {
+    window.location.href = /(.*)edit$/.exec(window.location.href)[1] + "lame";
+  }
 });
 
 ////////////////////////////
@@ -155,14 +156,3 @@ function checkAndSetDefoults() {
     $(".bespin").attr("data-bespinoptions",bespinOptions);
   }
 }
-
-
-
-
-
-
-
-
-
-
-
