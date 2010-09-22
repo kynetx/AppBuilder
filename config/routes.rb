@@ -4,7 +4,7 @@ ActionController::Routing::Routes.draw do |map|
   map.authorize "authorize", :controller => "applist", :action => "authorize"
   map.duplicate "duplicate/:application_id", :controller => "users", :action => "duplicate_application"
 
-  map.resources :applications, :member => { :show_deploy => :get, :deploy => :get, :update => :put, :lame => :get }
+  map.resources :applications, :member => { :show_deploy => :get, :deploy => :get, :update => :put }
 
   # High level mapping
   map.manage "manage/:id", :controller => "manage", :action => "index"

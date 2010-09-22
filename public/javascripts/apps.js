@@ -1,6 +1,6 @@
 $(document).ready(function() {
   // stick a pencil in your eye and then everything looks better on Windows and IE
-  if($.browser.msie) {
+  /*if($.browser.msie) {
     var rowCount = 0;
     $(".qtable tr").each(function() {
       if(rowCount != 0) {
@@ -16,7 +16,7 @@ $(document).ready(function() {
       }
       rowCount++;
     });
-  }
+  }*/
   
   $("#find").val("CTRL + F");
   $("tr:even").css({"background-color":"#F2F2F2"});
