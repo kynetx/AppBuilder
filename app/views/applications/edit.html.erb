@@ -1,10 +1,20 @@
-<%= stylesheet "BespinEmbedded.css" %>
-<%= javascript "BespinEmbedded.js" %>
+<script>
+	CodeMirrorConfig = {
+		lineNumbers:false,
+		textWrapping:true,
+		tabMode:"shift",
+		width:"100%",
+		height:"100%"
+	}
+
+</script>
+<script src="/CodeMirror-0.8/js/codemirror.js"></script>
+
 <%= javascript "jquery.hotkeys-0.7.9.min.js" %>
 <%= javascript "edit.js" %>
 <%= stylesheet "edit.css" %>
 <%= app_menu :edit, params[:id] %>
-<div id="editor" appid="<%= @application.application_id %>">
+<div id="editorold" appid="<%= @application.application_id %>">
   <div id="control-tray">
     <img alt="save" id="save" src="/images/save.png" title="CTRL+S or CMD+S to save"/>
     <!-- <img alt="settings" id="settings" src="/images/settings.png" title="change options for when editor loads" /> -->
@@ -17,22 +27,9 @@
   <img id="success" title="We did it!" alt="We did it!" src="/images/success.png" />
   <img id="fail" title="Oh No! Something when wrong." alt="Oh No! Something when wrong." src="/images/fail.png" />
 </div>
-<%= text_area_tag(:"unadulterated-source", @application.krl, :cols => 20, :rows => 40 ) %>
-
-<div id="unsuported-browser">
-  <h1>If you are seeing this then your browser doesn't support Bespin.</h1>
-  <h1>Options:</h1>
-  <ul>
-    <li>Use our <a id="lame" href="<%= lame_application_path(params[:id]) %>">lame editor</a> at <%= lame_application_path(params[:id]) %></li>
-    <li>Use a browser that supports Bespin
-      <ul>
-        <li>Firefox</li>
-        <li>Google Chromium</li>
-        <li>Safari</li>
-      </ul>
-    </li>
-  </ul>
-</div>
+<div id="editor">
+	<%= text_area_tag(:"unadulterated-source", @application.krl, :cols => 20, :rows => 40 ) %>
+</div
 <div id="error-tray">
   <div id="error-control-tray">Error(s) found when trying to save: <span id="close-error-tray" class="keyboard-tip">(ctrl + e) <img src="/images/close-small.png" title="toggle error tray with ctrl + e"></span></div>
   <div id="error"></div>

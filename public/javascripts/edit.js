@@ -5,9 +5,6 @@ $(document).ready(function() {
     window.location.href = /(.*)edit$/.exec(window.location.href)[1] + "lame";
   }
   
-  // set bespin window sizes before bespin loads
-  $("#bespin-to-be, #control-tray").height($(window).height()-90);
-  $("#bespin-to-be").width($(window).width()-51);
   
   // cookies!
   hideErrorTray = 0;
@@ -40,18 +37,25 @@ $(document).ready(function() {
     }
   });
   
-  window.onresize = resizeMe;
+  //window.onresize = resizeMe;
 });
 
-function resizeMe() {
+/*function resizeMe() {
   $("#bespin-to-be, #control-tray").height($(window).height()-80);
   $("#bespin-to-be").width($(window).width()-50);
-}
+}*/
 
 // WHEN PAGE HAS FINISHED LOADING
 $(window).load(function() {
-  window.bespin = document.getElementById("bespin-to-be").bespin;
-  window.bespin.value = $("textarea").text();
+  window.editor = CodeMirror.fromTextArea("unadulterated-source", {
+	  parserfile: ["tokenizejavascript.js", "parsejavascript.js"],
+	  path: "/CodeMirror-0.8/js/",
+	  stylesheet: "/CodeMirror-0.8/css/jscolors.css"
+	});
+  /*window.bespin = document.getElementById("bespin-to-be").bespin;
+  if(window.bespin){
+	  window.bespin.value = $("textarea").text();
+  }*/
 });
 
 ////////////////////////////
@@ -65,7 +69,7 @@ function saveApp() {
   // insert spinner here
   $("#saving").show();
   var appid = $("#editor").attr("appid");
-  var krl = window.bespin.value;
+  var krl = window.editor.getCode();
   $.ajax({
     url: "/applications/" + appid + "/update",
     type: "PUT",
@@ -155,14 +159,3 @@ function checkAndSetDefoults() {
     $(".bespin").attr("data-bespinoptions",bespinOptions);
   }
 }
-
-
-
-
-
-
-
-
-
-
-
