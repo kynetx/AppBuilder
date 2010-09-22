@@ -6,7 +6,6 @@
 		width:"100%",
 		height:"100%"
 	}
-
 </script>
 <script src="/CodeMirror-0.8/js/codemirror.js"></script>
 
@@ -27,7 +26,7 @@
   <img id="success" title="We did it!" alt="We did it!" src="/images/success.png" />
   <img id="fail" title="Oh No! Something when wrong." alt="Oh No! Something when wrong." src="/images/fail.png" />
 </div>
-<div id="editor">
+<div id="editor" appid="<%= @application.application_id %>">
 	<%= text_area_tag(:"unadulterated-source", @application.krl, :cols => 20, :rows => 40 ) %>
 </div
 <div id="error-tray">
