@@ -1,9 +1,6 @@
 // WHEN DOM IS READY
 $(document).ready(function() {
-  // REDIRECT IF INCOMPATIBLE BROWSER
-  if($.browser.msie || $.browser.opera) {
-    window.location.href = /(.*)edit$/.exec(window.location.href)[1] + "lame";
-  }
+
   
   
   // cookies!
@@ -47,6 +44,7 @@ $(document).ready(function() {
 
 // WHEN PAGE HAS FINISHED LOADING
 $(window).load(function() {
+
   window.editor = CodeMirror.fromTextArea("unadulterated-source", {
 	  parserfile: ["tokenizejavascript.js", "parsejavascript.js"],
 	  path: "/CodeMirror-0.8/js/",
@@ -56,6 +54,7 @@ $(window).load(function() {
   if(window.bespin){
 	  window.bespin.value = $("textarea").text();
   }*/
+
 });
 
 ////////////////////////////
@@ -159,3 +158,4 @@ function checkAndSetDefoults() {
     $(".bespin").attr("data-bespinoptions",bespinOptions);
   }
 }
+
