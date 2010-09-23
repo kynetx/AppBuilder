@@ -20,18 +20,29 @@ body, html {
   position: absolute;
   top: 90px;
   left: 40px;
-  right: 10px;
+  right: 55px;
   bottom: 10px;
   z-index: 2;
-  border: 1px solid lightgrey;
   
 }
 #editor div.CodeMirror-line-numbers,#editor div.CodeMirror-line-numbers div {
 	float: none;
 	font-size: 10pt;
 	font-family: monospace;
+
+	text-align:right;
+	line-height:17px;
+}
+
+#editor div.CodeMirror-line-numbers {
+	/*border-right: 1px solid gray;
+	color: gray;*/
 	margin: 0.4em;
-	
+}
+
+.CodeMirror-wrapping>div {
+	border-right: 1px solid gray;
+	color: gray;
 }
 
 #saving, #success, #fail {

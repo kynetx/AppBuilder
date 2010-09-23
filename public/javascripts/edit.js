@@ -1,13 +1,24 @@
 // WHEN DOM IS READY
 $(document).ready(function() {
-
+  
+    window.editor = CodeMirror.fromTextArea("unadulterated-source", {
+		parserfile: ["tokenizejavascript.js", "parsejavascript.js"],
+		path: "/CodeMirror-0.8/js/",
+		stylesheet: "/CodeMirror-0.8/css/jscolors.css",
+		lineNumbers:true,
+		textWrapping:true,
+		tabMode:"shift",
+		enterMode:"keep",
+		width:"100%",
+		height:"100%",
+		saveFunction: saveApp
+	});
   
   
   // cookies!
   hideErrorTray = 0;
   //errorTrayHeight = 250;
   checkAndSetDefoults();
-
   
   // control buttons
   $("img#save").click(saveApp);
@@ -34,27 +45,6 @@ $(document).ready(function() {
     }
   });
   
-  //window.onresize = resizeMe;
-});
-
-/*function resizeMe() {
-  $("#bespin-to-be, #control-tray").height($(window).height()-80);
-  $("#bespin-to-be").width($(window).width()-50);
-}*/
-
-// WHEN PAGE HAS FINISHED LOADING
-$(window).load(function() {
-
-  window.editor = CodeMirror.fromTextArea("unadulterated-source", {
-	  parserfile: ["tokenizejavascript.js", "parsejavascript.js"],
-	  path: "/CodeMirror-0.8/js/",
-	  stylesheet: "/CodeMirror-0.8/css/jscolors.css"
-	});
-  /*window.bespin = document.getElementById("bespin-to-be").bespin;
-  if(window.bespin){
-	  window.bespin.value = $("textarea").text();
-  }*/
-
 });
 
 ////////////////////////////
@@ -151,11 +141,6 @@ function checkAndSetDefoults() {
     hideErrorTray  = prefs[0];
     // height of error tray
    // errorTrayHeight = prefs[1];
-    
-    // tab stops
-    var bespinOptions = $(".bespin").attr("data-bespinoptions");
-    var bespinOptions = bespinOptions.replace(/"tabstop":\s[0-9]/,"\"tabstop\": "+ prefs[2]);
-    $(".bespin").attr("data-bespinoptions",bespinOptions);
   }
 }
 
