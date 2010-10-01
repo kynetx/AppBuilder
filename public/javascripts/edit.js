@@ -9,6 +9,7 @@ $(document).ready(function() {
 		textWrapping:true,
 		tabMode:"shift",
 		enterMode:"keep",
+		electricChars:false,
 		width:"100%",
 		height:"100%",
 		saveFunction: saveApp
