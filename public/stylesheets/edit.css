@@ -35,8 +35,7 @@ body, html {
 }
 
 #editor div.CodeMirror-line-numbers {
-	/*border-right: 1px solid gray;
-	color: gray;*/
+
 	margin: 0.4em;
 }
 

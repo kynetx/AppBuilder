@@ -19,9 +19,9 @@ class ApplicationsController < ApplicationController
         response = (current_application.krl = params[:krl])
         render :text => response
       end
-    rescue => e
+    rescue KRLParseError => e
       Rails.logger.error "APP UPDATE ERROR:\n #{e.message}\n#{e.backtrace}"
-      render :status => 400, :text => e
+      render :status => 400, :text => e.parse_errors.join("<br/>")
     end
   end
 

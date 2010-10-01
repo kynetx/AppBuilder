@@ -2,3 +2,5 @@ log/*.log
 tmp/**/*
 config/appbuilder.yml
 db/*.sqlite3
+.project
+.tmp*
