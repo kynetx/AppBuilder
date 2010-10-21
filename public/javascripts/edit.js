@@ -51,10 +51,9 @@ $(document).ready(function() {
 ////////////////////////////
 //  CONTROL TRAY FUNCTIONS
 ////////////////////////////
-$("#close-error-tray, #warning").live("click", toggleErrorTray);
 
 function saveApp() {
-  $("#error-tray").hide();
+  hideError();
   $("#error").html("");
   // insert spinner here
   $("#saving").show();
@@ -65,7 +64,7 @@ function saveApp() {
     type: "PUT",
     data: {"krl":krl},
     success: function(msg) {
-      $("#saving, #fail, #success, #warning, #error-tray, #close-error-tray").hide();
+      $("#saving, #fail, #success, #warning").hide();
       $("#success").show().fadeOut(3000);
       $("#good").show();
       $("#unknown-error").html("");
@@ -82,15 +81,8 @@ function saveApp() {
       // show indicator for save failure
       $("#fail").show().fadeOut(3000);
       $("#warning").show();
-      if(hideErrorTray==0) {
-        $("#error-tray, #close-error-tray").fadeIn();
-      }
-      $("unknown-error").html("");
-      try {
-        //console.log(x.responseText);
-      } catch(e) {
-        
-      }
+      showError();
+
       $("#error-tray #error").append(x.responseText);
     }
   });
@@ -99,11 +91,22 @@ function saveApp() {
 
 function toggleErrorTray() {
   if( $("#error-tray").is(":visible") ) {
-    $("#error-tray, #close-error-tray").fadeOut();
+    hideError();
   } else {
-    $("#error-tray, #close-error-tray").fadeIn();
+    showError();
   }
 }
+
+function hideError(){
+	$("#editor").removeClass("showerror");
+	$("#error-tray").hide();
+}
+
+function showError(){
+	$("#editor").addClass("showerror");
+	$("#error-tray").show();
+}
+
 
 function changeSettings() {
 //  alert("In the future you will be able to save preferences with this.");

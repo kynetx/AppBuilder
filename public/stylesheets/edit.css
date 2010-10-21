@@ -25,6 +25,9 @@ body, html {
   z-index: 2;
   
 }
+#editor.showerror {
+	bottom: 185px;
+}
 #editor div.CodeMirror-line-numbers,#editor div.CodeMirror-line-numbers div {
 	float: none;
 	font-size: 10pt;
@@ -83,12 +86,12 @@ body, html {
 /********************
 ** ERROR OUTPUT
 ********************/
-#error-tray {
+div#error-tray {
   position: fixed;
   bottom: 0px;
   left: 0px;
-  height: 250px;
-  width:99%;
+  height: 175px;
+  right:0px;
   background-color: black;
   color: white;
   font-family: monospace;
@@ -111,7 +114,8 @@ body, html {
 
 #close-error-tray {
   cursor:pointer;
-  float:right;
+  position: absolute;
+  right: 5px;
 }
 
 .keyboard-tip {

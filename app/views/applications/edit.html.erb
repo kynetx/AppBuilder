@@ -9,19 +9,19 @@
     <img alt="save" id="save" src="/images/save.png" title="CTRL+S or CMD+S to save"/>
     <!-- <img alt="settings" id="settings" src="/images/settings.png" title="change options for when editor loads" /> -->
     <img alt="good" id="good" src="/images/good.png" title="Successfully saved" />
-    <img alt="warning" id="warning" src="/images/warning.png" title="CTRL+E to toggle error tray" />
+    <img alt="warning" id="warning" src="/images/warning.png" title="CTRL+E to toggle error tray" onclick="toggleErrorTray();" />
     <div id="last-save">00:00</div>
   </div>
-  <div class="bespin" id="bespin-to-be"  data-bespinoptions='{ "settings": { "tabstop": 2 }, "syntax": "js", "stealFocus": true }'></div>
+  
   <img id="saving" title="Saving your awesome Kynetx app!" alt="Saving your awesome Kynetx app!" src="/images/saving.gif" />
   <img id="success" title="We did it!" alt="We did it!" src="/images/success.png" />
   <img id="fail" title="Oh No! Something when wrong." alt="Oh No! Something when wrong." src="/images/fail.png" />
 </div>
 <div id="editor" appid="<%= @application.application_id %>">
 	<%= text_area_tag(:"unadulterated-source", @application.krl, :cols => 20, :rows => 40 ) %>
-</div
+</div>
 <div id="error-tray">
-  <div id="error-control-tray">Error(s) found when trying to save: <span id="close-error-tray" class="keyboard-tip">(ctrl + e) <img src="/images/close-small.png" title="toggle error tray with ctrl + e"></span></div>
+  <div id="error-control-tray">Error(s) found when trying to save: <span id="close-error-tray" class="keyboard-tip">(ctrl + e) <img src="/images/close-small.png" title="toggle error tray with ctrl + e" onclick="hideError();"></span></div>
   <div id="error"></div>
   <div id="unknown-error"></div>
 </div>
