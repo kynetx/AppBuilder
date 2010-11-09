@@ -3,8 +3,8 @@ $(document).ready(function() {
   
     window.editor = CodeMirror.fromTextArea("unadulterated-source", {
 		parserfile: ["tokenizejavascript.js", "parsejavascript.js"],
-		path: "/CodeMirror-0.8/js/",
-		stylesheet: "/CodeMirror-0.8/css/jscolors.css",
+		path: "/CodeMirror-0.9/js/",
+		stylesheet: "/CodeMirror-0.9/css/jscolors.css",
 		lineNumbers:true,
 		textWrapping:true,
 		tabMode:"shift",
