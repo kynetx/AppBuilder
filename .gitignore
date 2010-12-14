@@ -4,3 +4,5 @@ config/appbuilder.yml
 db/*.sqlite3
 .project
 .tmp*
+.bundle*
+*.swp*
