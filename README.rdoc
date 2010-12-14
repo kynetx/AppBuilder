@@ -1,0 +1,39 @@
+== Welcome to Kynetx AppBuilder
+
+== Request Oauth Tokens
+Send an email to oss [at] kynetx [dot] com to request your Oauth Consumer Key and Secret.  We will send you an appbuilder.yml file that you can drop into the RAILS_ROOT/config directory that will have development and production keys. When sending the email please include the following for both your production and test/development environments:
+
+1. Name of your application
+2. URL of your application
+3. Callback URL. (This is the url in your application that the user will be sent to after they have allowed access)
+4. Support URL (optional)
+ 
+== Installation
+Make sure you have Rails 2.3.5 installed with Ruby 1.8.7.  Copy the code down and run the Rails webserver of your choice. Next, update your config/database.yml file to match your environment. AppBuilder uses a very small table for user management and oauth tokens. Finally, run a rake db:migrate to create the database.
+
+== Contributing
+Please feel free to fork the code and make your contributions. We will watch the Fork Queue and bring in the changes.
+
+
+== License
+The MIT License
+
+Copyright (c) 2010 Kynetx Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
