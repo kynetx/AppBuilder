@@ -22,6 +22,7 @@ GEM
       multipart-post
       oauth
     multipart-post (1.0.1)
+    mysql2 (0.2.6)
     oauth (0.4.4)
     rack (1.1.0)
     rails (2.3.8)
@@ -32,7 +33,6 @@ GEM
       activesupport (= 2.3.8)
       rake (>= 0.8.3)
     rake (0.8.7)
-    sqlite3-ruby (1.3.2)
 
 PLATFORMS
   ruby
@@ -42,6 +42,6 @@ DEPENDENCIES
   httparty
   kynetx_am_api
   multipart-post
+  mysql2
   oauth
   rails (= 2.3.8)
-  sqlite3-ruby
