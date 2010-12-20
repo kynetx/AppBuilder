@@ -5,7 +5,7 @@ module ApplicationHelper
     
     # TODO: Replace these with the actual images when we get them
     menu_items = [
-      {:controller => "applications", :action => "index", :link => "App List"},
+      {:controller => "applications", :action => "index", :link => "<img src ='/images/nav/apps.png/>"},
       {:controller => "manage", :action => "index", :link => current == :manage ? "<img src='/images/nav/manage-current.png'/>" : "<img src='/images/nav/manage.png'/>"},
       {:controller => "applications", :action => "edit", :link => current == :edit ? "<img src='/images/nav/edit-current.png'/>" : "<img src='/images/nav/edit.png'/>"},
       {:controller => "test_app", :action => "index", :link => current == :test ? "<img src='/images/nav/test-current.png'/>" : "<img src='/images/nav/test.png'/>"},
