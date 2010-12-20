@@ -5,10 +5,10 @@
 <%= quick_table @versions.reverse, [
 	{:field => "Version", :value => lambda{|v| 
 		link_to(v["version"], "#", :onclick => "showSource('#{@ruleset_id}', #{v["version"]})") + 
-		"&nbsp;&nbsp;&nbsp;&nbsp;" + 
+		("&nbsp;&nbsp;&nbsp;&nbsp;" + 
 		"<span id='loading_#{v["version"]}' style='display:none;'>" + 
 		image_tag("loading_small.gif", :style=>"height:12px") + 
-		"</span>"}},
+		"</span>"}}).html_safe,
 	{:field => "User", :value => lambda{|v| v["name"] }},
 	{:field => "Date", :value => lambda{|v| v["created"] }},
 	{:field => "Note", :value => lambda{|v| note_helper(v) }},
