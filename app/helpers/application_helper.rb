@@ -72,7 +72,7 @@ module ApplicationHelper
       end
       counter += 1
     end
-    
+   
     if additional_rows[:lastrow]
       s += tag("tr", additional_rows[:lastrow][:opts], true)
       s += additional_rows[:lastrow][:value].call
